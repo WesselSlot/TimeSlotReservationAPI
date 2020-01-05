@@ -1,5 +1,7 @@
 <?php
-namespace src\core;
+namespace app\core;
+
+use mysqli;
 
 class Database
 {

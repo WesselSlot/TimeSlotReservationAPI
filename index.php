@@ -13,9 +13,9 @@ $parameter = $matches['parameter'];
 
 try {
     if ($parameter === null) {
-        $controller->$functionName();
+        var_dump($controller->$functionName());
     } else {
-        $controller->$functionName($parameter);
+        var_dump($controller->$functionName($parameter));
     }
 } catch (Exception $e) {
     throw new Exception($e);
