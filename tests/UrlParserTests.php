@@ -7,7 +7,7 @@ use app\core\UrlParser;
 class UrlParserTests extends TestCase
 {
     public function testControllerParser() {
-        $url = "123.34.545/test/create/1";
+        $url = "http://123.34.545/test/create/1";
         $urlParser = new UrlParser();
 
         $matches = $urlParser->parseUrl($url);
@@ -16,7 +16,7 @@ class UrlParserTests extends TestCase
     }
 
     public function testActionParser() {
-        $url = "123.34.545/test/create/1";
+        $url = "http://123.34.545/test/create/1";
         $urlParser = new UrlParser();
 
         $matches = $urlParser->parseUrl($url);
@@ -25,7 +25,7 @@ class UrlParserTests extends TestCase
     }
 
     public function testParameterParser() {
-        $url = "123.34.545/test/create/1";
+        $url = "http://123.34.545/test/create/1";
         $urlParser = new UrlParser();
 
         $matches = $urlParser->parseUrl($url);

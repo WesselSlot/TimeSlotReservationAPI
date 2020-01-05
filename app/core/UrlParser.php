@@ -13,20 +13,21 @@ class UrlParser
 {
     public function parseUrl($url) {
         $matches = array();
-        $items = explode("/", $url);
+        $partsOfUrl = parse_url($url);
+        $pathParts = explode("/", substr($partsOfUrl["path"], 1));
 
-        $matches['controller'] = $this->convertToController($items[1]);
+        $matches['controller'] = $this->convertToController($pathParts[0]);
 
-        if (empty($items[2])) {
+        if (empty($pathParts[1])) {
             $matches['action'] = "index";
         } else {
-            $matches['action'] = $items[2];
+            $matches['action'] = $pathParts[1];
         }
 
-        if (empty($items[3])) {
+        if (empty($pathParts[2])) {
             $matches['parameter'] = null;
         } else {
-            $matches['parameter'] = $items[3];
+            $matches['parameter'] = $pathParts[2];
         }
 
         return $matches;
