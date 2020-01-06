@@ -17,6 +17,6 @@ class CalenderController
     public function index() {
         $calender = new Calender(new TimeSlotRepository());
 
-        return $calender->getCalender();
+        return json_encode($calender->getCalender());
     }
 }

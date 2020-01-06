@@ -15,7 +15,7 @@ class Calender implements CalenderInterface
     }
 
     public function getCalender() {
+
         return $this->timeSlotRepository->getAllAvailableTimeSlots();
     }
-
 }
