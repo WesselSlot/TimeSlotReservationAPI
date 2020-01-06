@@ -12,10 +12,13 @@ class Calender implements CalenderInterface
     public function __construct(TimeSlotRepositoryInterface $timeSlotRepository)
     {
         $this->timeSlotRepository = $timeSlotRepository;
+
     }
 
     public function getCalender() {
+        $calender = array();
+        $calender['TimeSlots'] = $this->timeSlotRepository->getAllAvailableTimeSlots();
 
-        return $this->timeSlotRepository->getAllAvailableTimeSlots();
+        return $calender;
     }
 }

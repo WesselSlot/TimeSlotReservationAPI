@@ -6,8 +6,6 @@ class Reservation
 {
     public $id;
     public $name;
-    public $startDateTime;
-    public $endDateTime;
     public $comment;
-    public $active;
+    public $TimeSlot;
 }
