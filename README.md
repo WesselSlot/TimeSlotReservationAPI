@@ -1,4 +1,4 @@
-# TimeSlotReservationAPI [![Build Status](https://travis-ci.org/WesselSlot/TimeSlotReservation.svg?branch=master)](https://travis-ci.org/WesselSlot/TimeSlotReservation)
+# TimeSlotReservationAPI [![Build Status](https://travis-ci.org/WesselSlot/TimeSlotReservationAPI.svg?branch=master)](https://travis-ci.org/WesselSlot/TimeSlotReservationAPI)
 
 ## Getting Started
 Your environment must meet the following requirements:
