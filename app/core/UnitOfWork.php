@@ -1,6 +1,7 @@
 <?php
-namespace app\core\database;
+namespace app\core;
 
+use app\core\interfaces\UnitOfWorkInterface;
 use app\core\repositories\TimeSlotRepository;
 use Doctrine\ORM\EntityManagerInterface;
 

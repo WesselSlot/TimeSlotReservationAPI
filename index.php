@@ -7,7 +7,8 @@ $urlParser = new UrlParser();
 $matches = $urlParser->parseUrl($_SERVER['REQUEST_URI']);
 $controllerName = "app\api\\"."{$matches["controller"]}";
 
-$controller = new $controllerName();
+// Assume that every controller need the unitOfWork???
+$controller = new $controllerName($unitOfWork);
 $functionName = $matches['action'];
 $parameter = $matches['parameter'];
 

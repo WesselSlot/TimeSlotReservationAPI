@@ -5,8 +5,7 @@ use app\core\interfaces\TimeSlotRepositoryInterface;
 use app\core\models\TimeSlot;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
-use mysqli;
-
+use Doctrine\ORM\QueryBuilder;
 
 class TimeSlotRepository implements TimeSlotRepositoryInterface
 {
@@ -28,12 +27,9 @@ class TimeSlotRepository implements TimeSlotRepositoryInterface
     }
 
     public function getAllFutureTimeSlot() {
-        $now = new DateTime();
+        $query =  $this->entityManager->createQuery("SELECT * FROM TimeSlot")->getArrayResult();
 
-        $this->entityManager->createQueryBuilder()
-            ->select('t')
-            ->from('TimeSlot')
-            ->where('t.startDateTime > :currentDate')
-            ->setParameter('currentDate',  $now->format('Y-m-d H:i:s'));
+        var_dump($query);
+        return null;
     }
 }

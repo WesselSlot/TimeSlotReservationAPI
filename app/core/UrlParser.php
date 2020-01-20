@@ -1,8 +1,6 @@
 <?php
 namespace app\core;
 
-use Exception;
-
 /**
  * Class UrlParser
  * @package src\core

@@ -1,7 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 
-use app\core\database\UnitOfWork;
+use app\core\UnitOfWork;
 use Dotenv\Dotenv;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -23,6 +23,10 @@ $dbParams = array(
     'host' => getenv('DB_HOST')
 );
 
-$entityManager = EntityManager::create($dbParams, $config);
-$unitOfWork = new UnitOfWork($entityManager);
+try {
+    $entityManager = EntityManager::create($dbParams, $config);
+    $unitOfWork = new UnitOfWork($entityManager);
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
 
