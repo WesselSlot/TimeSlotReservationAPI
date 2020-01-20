@@ -1,42 +1,39 @@
 <?php
 namespace app\core\repositories;
 
-use app\core\Database;
 use app\core\interfaces\TimeSlotRepositoryInterface;
 use app\core\models\TimeSlot;
-use JsonMapper;
+use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 use mysqli;
 
 
-class TimeSlotRepository extends BaseRepository implements TimeSlotRepositoryInterface
+class TimeSlotRepository implements TimeSlotRepositoryInterface
 {
-    private $database;
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
 
-    public function __construct()
+    public function __construct(
+        EntityManagerInterface $entityManager
+    )
     {
-        $this->database = new Database();
+        $this->entityManager = $entityManager;
     }
 
-    public function getAllAvailableTimeSlots() {
-        /** @var mysqli */
-        $connection = $this->database->openConnection();
-        $result = $this->checkIfResultIsNotEmpty($connection->query("SELECT * FROM TimeSlot WHERE Available = 1")->fetch_all());
-        $this->database->closeConnection();
+    public function create(TimeSlot $timeSlot)
+    {
+        $this->entityManager->persist($timeSlot);
+    }
 
-        if(empty($result)) {
-            return $result;
-        }
+    public function getAllFutureTimeSlot() {
+        $now = new DateTime();
 
-        $timeSlots = array();
-        foreach ($result as $item) {
-            $timeSlot = new TimeSlot();
-            $timeSlot->id = $item[0];
-            $timeSlot->startDateTime = $item[1];
-            $timeSlot->endDateTime = $item[2];
-            $timeSlot->available = $item[3];
-            $timeSlots[] = $timeSlot;
-        }
-
-        return $timeSlots;
+        $this->entityManager->createQueryBuilder()
+            ->select('t')
+            ->from('TimeSlot')
+            ->where('t.startDateTime > :currentDate')
+            ->setParameter('currentDate',  $now->format('Y-m-d H:i:s'));
     }
 }

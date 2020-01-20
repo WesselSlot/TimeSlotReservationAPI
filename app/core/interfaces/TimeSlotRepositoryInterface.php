@@ -2,7 +2,10 @@
 
 namespace app\core\interfaces;
 
+use app\core\models\TimeSlot;
+
 interface TimeSlotRepositoryInterface
 {
-    public function getAllAvailableTimeSlots();
+    public function create(TimeSlot $timeSlot);
+    public function getAllFutureTimeSlot();
 }

@@ -1,6 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 
+use app\core\database\UnitOfWork;
 use Dotenv\Dotenv;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -23,6 +24,5 @@ $dbParams = array(
 );
 
 $entityManager = EntityManager::create($dbParams, $config);
-
-
+$unitOfWork = new UnitOfWork($entityManager);
 

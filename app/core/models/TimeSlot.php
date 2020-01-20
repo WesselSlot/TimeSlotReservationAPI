@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="timeSlot")
+ * @ORM\Table(name="TimeSlot")
  */
 class TimeSlot
 {
