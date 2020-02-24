@@ -32,6 +32,4 @@ class UrlParserTests extends TestCase
 
         $this->assertTrue($matches['parameter'] == '1');
     }
-
-
 }

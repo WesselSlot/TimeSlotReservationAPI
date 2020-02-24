@@ -3,9 +3,7 @@ namespace app\core\repositories;
 
 use app\core\interfaces\TimeSlotRepositoryInterface;
 use app\core\models\TimeSlot;
-use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\QueryBuilder;
 
 class TimeSlotRepository implements TimeSlotRepositoryInterface
 {
@@ -27,9 +25,10 @@ class TimeSlotRepository implements TimeSlotRepositoryInterface
     }
 
     public function getAllFutureTimeSlot() {
-        $query =  $this->entityManager->createQuery("SELECT * FROM TimeSlot")->getArrayResult();
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('t')
+            ->from('app\core\models\TimeSlot', 't');
 
-        var_dump($query);
-        return null;
+        return $queryBuilder->getQuery()->getArrayResult();
     }
 }

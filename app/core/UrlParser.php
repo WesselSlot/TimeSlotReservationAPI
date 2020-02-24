@@ -1,6 +1,8 @@
 <?php
 namespace app\core;
 
+use app\core\models\api\CalenderService;
+
 /**
  * Class UrlParser
  * @package src\core

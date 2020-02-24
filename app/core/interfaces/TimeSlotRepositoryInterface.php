@@ -8,4 +8,5 @@ interface TimeSlotRepositoryInterface
 {
     public function create(TimeSlot $timeSlot);
     public function getAllFutureTimeSlot();
+    public function reserveTimeSlot(int $timeSlotId);
 }
